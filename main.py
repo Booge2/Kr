@@ -9,12 +9,16 @@ def add_friends(friends_dict, person1, person2):
 
 def main():
     friends_dict = {}
-    num_entries = int(input("Введіть кількість пар друзів: "))
 
-    for _ in range(num_entries):
-        person1 = input("Введіть ім'я першої людини: ")
-        person2 = input("Введіть ім'я другої людини: ")
-        add_friends(friends_dict, person1, person2)
+    while True:
+        person = input("Введіть ім'я людини: ")
+        if person == "done":
+            break
+        while True:
+            friend = input("Введіть ім'я друга/подруги: ")
+            if friend == "done":
+                break
+            add_friends(friends_dict, person, friend)
 
     with open("friends.pkl", "wb") as f:
         pickle.dump(friends_dict, f)
